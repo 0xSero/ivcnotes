@@ -1,3 +1,5 @@
+## NOTE: SERVICE IS DISABLED, FOR TESTING WE MUST REENABLE IT, PLEASE CONTACT ME IF TESTING IS NEEDED
+
 ## How to use
 
 Make sure you have Rust & cargo on your system, clone the repo
