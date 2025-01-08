@@ -238,51 +238,6 @@ Multi-Party Computation (MPC) offers exciting possibilities for enhancing the se
 
 By integrating MPC, the ivcnotes system could potentially offer even stronger privacy guarantees and more flexible verification options, further enhancing its utility in sensitive financial applications and complex multi-party scenarios.
 
-### MPC: Betrayal Detection System
-
-```mermaid
-sequenceDiagram
-    participant Sender
-    participant Service
-    participant MPC Node 1
-    participant MPC Node 2
-    participant MPC Node 3
-
-    Note over Sender,MPC Node 3: Initialization
-    Sender->>Service: Request Betrayal Check
-    Service->>Service: Divide historical nullifiers into shares
-
-    Note over Sender,MPC Node 3: Distribution
-    Service->>MPC Node 1: Send nullifier share 1
-    Service->>MPC Node 2: Send nullifier share 2
-    Service->>MPC Node 3: Send nullifier share 3
-    Sender->>MPC Node 1: Send encrypted new nullifier
-    Sender->>MPC Node 2: Send encrypted new nullifier
-    Sender->>MPC Node 3: Send encrypted new nullifier
-
-    Note over MPC Node 1,MPC Node 3: Computation
-    MPC Node 1->>MPC Node 1: Compare with share 1
-    MPC Node 2->>MPC Node 2: Compare with share 2
-    MPC Node 3->>MPC Node 3: Compare with share 3
-    MPC Node 1<->>MPC Node 2: Exchange partial results
-    MPC Node 2<->>MPC Node 3: Exchange partial results
-    MPC Node 3<->>MPC Node 1: Exchange partial results
-
-    Note over MPC Node 1,MPC Node 3: Aggregation
-    MPC Node 1->>Service: Submit partial result
-    MPC Node 2->>Service: Submit partial result
-    MPC Node 3->>Service: Submit partial result
-    Service->>Service: Combine results
-
-    Note over Sender,Service: Result
-    alt Double-Spending Detected
-        Service->>Sender: Report Betrayal
-    else No Double-Spending
-        Service->>Sender: Confirm Valid Transaction
-    end
-```
-
---------------
 
 ### Challenges and Limitations of MPC Integration
 
